@@ -15,7 +15,7 @@ GRANT USAGE ON SCHEMA steerable TO steerable_trainer;
 GRANT SELECT ON steerable.runs, steerable.policies, steerable.proposals, steerable.events,
                 steerable.proposal_status, steerable.current_config, steerable.pending
     TO steerable_trainer;
-GRANT INSERT ON steerable.metrics TO steerable_trainer;
+GRANT SELECT, INSERT ON steerable.metrics TO steerable_trainer;
 GRANT EXECUTE ON FUNCTION steerable.ack(bigint, integer, text, text) TO steerable_trainer;
 GRANT EXECUTE ON FUNCTION steerable.launch(bigint, jsonb, jsonb) TO steerable_trainer;
 GRANT EXECUTE ON FUNCTION steerable.finish(bigint, text) TO steerable_trainer;
