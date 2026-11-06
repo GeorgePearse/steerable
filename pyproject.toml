@@ -55,6 +55,7 @@ torch = [{ index = "pytorch-cpu" }]
 line-length = 110
 target-version = "py310"
 src = ["src", "tests", "demo"]
+extend-exclude = ["*.md"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
