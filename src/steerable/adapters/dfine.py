@@ -162,8 +162,8 @@ def steerable_solver(
             self.steer = Steerable(dsn, run_id, appliers, poll_interval_s=poll_interval_s)
             self.steer.launch(config, POLICIES if policies is None else policies)
             start_epoch = max(0, int(getattr(self, "last_epoch", -1)) + 1)
-            wrapped: Any = SteerableLoader(self.train_dataloader, self.steer, start_epoch=start_epoch)
-            self.train_dataloader = wrapped
+            loader: Any = getattr(self, "train_dataloader")  # noqa: B009 - the base class owns this attribute
+            setattr(self, "train_dataloader", SteerableLoader(loader, self.steer, start_epoch=start_epoch))  # noqa: B010
 
         def fit(self) -> None:
             try:
