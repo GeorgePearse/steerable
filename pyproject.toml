@@ -17,13 +17,13 @@ dependencies = ["psycopg[binary]>=3.1"]
 
 [project.optional-dependencies]
 torch = ["torch>=2.1"]
-mcp = ["mcp>=1.2"]
+mcp = ["mcp>=2"]
 tune = ["anthropic>=0.40"]
 dev = [
   "pytest>=8",
   "ruff>=0.6",
   "mypy>=1.10",
-  "mcp>=1.2",
+  "mcp>=2",
   "anthropic>=0.40",
   "torch>=2.1",
   "numpy>=1.26",

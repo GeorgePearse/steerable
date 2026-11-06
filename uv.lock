@@ -2230,8 +2230,8 @@ tune = [
 requires-dist = [
     { name = "anthropic", marker = "extra == 'dev'", specifier = ">=0.40" },
     { name = "anthropic", marker = "extra == 'tune'", specifier = ">=0.40" },
-    { name = "mcp", marker = "extra == 'dev'", specifier = ">=1.2" },
-    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=1.2" },
+    { name = "mcp", marker = "extra == 'dev'", specifier = ">=2" },
+    { name = "mcp", marker = "extra == 'mcp'", specifier = ">=2" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10" },
     { name = "numpy", marker = "extra == 'dev'", specifier = ">=1.26" },
     { name = "psycopg", extras = ["binary"], specifier = ">=3.1" },
