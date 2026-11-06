@@ -1,0 +1,15 @@
+services:
+  db:
+    image: postgres:16
+    container_name: steerable-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: steerable
+    ports:
+      - "5440:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d steerable"]
+      interval: 2s
+      timeout: 2s
+      retries: 30

@@ -1,0 +1,36 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: steerable
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres -d steerable"
+          --health-interval 2s
+          --health-timeout 2s
+          --health-retries 30
+    env:
+      STEERABLE_TEST_DSN: postgresql://postgres:postgres@localhost:5432/steerable
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+      - run: uv python install 3.10
+      - run: uv sync --extra dev
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run mypy
+      - run: uv run pytest -q
